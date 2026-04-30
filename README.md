@@ -24,27 +24,12 @@
 
 ## 🏗️ 系统架构
 
-```mermaid
-graph LR
-    A[客户工单] --> B(意图理解Agent)
-    B --> C{核心决策}
-    C --> D[答案合成Agent]
-    D --> E[合规检查Agent]
-    E --> F[最终响应]
-  
-    G[动态知识库] --> D
-    H[历史工单] --> D
-    I[产品更新] --> G
-    J[知识聚合Agent] --> G
-  
-    D -->|冲突检测| K[版本修复记录]
-    D -->|交叉验证| L[操作指南]
-  
-    style A fill:#e1f5fe
-    style F fill:#c8e6c9
-    style J fill:#fff3e0
-    style E fill:#f3e5f5
-```
+| Agent | 职责 | 关键技术 |
+|-------|------|----------|
+| **Knowledge Aggregator** | 监控并聚合多源知识（文档/Wiki/工单/更新日志） | 定时爬取 + 知识图谱更新 |
+| **Intent Classifier** | 解析工单意图、紧急度、关键实体 | 规则引擎 + 轻量NLP |
+| **Answer Synthesizer** | **核心**：多源检索、冲突检测、答案合成 | 并行检索 + 一致性校验 + 置信度计算 |
+| **Compliance Checker** | 隐私过滤、语气调整、强制免责声明 | 规则引擎 + 模板替换 |
 
 ### 四大核心Agent
 
@@ -64,13 +49,6 @@ graph LR
 - 无外部依赖（纯Python标准库实现，便于演示）
 
 ### 安装与运行
-
-```bash
-# 1. 克隆或下载项目
-git clone https://github.com/yourusername/customer-support-agents.git
-cd customer-support-agents
-
-# 2. 直接运行演示
 python demo_system.py
 ```
 
