@@ -300,15 +300,6 @@ def check(self, answer, ticket):
 > - **零外部依赖原型**：纯Python标准库实现核心逻辑，证明架构可行性，便于快速验证
 
 ---
-
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
-
----
-
-
 **注意**：本项目为**架构演示原型**，生产环境需：
 1. 将 `MockDataStore` 替换为真实向量数据库（如Chroma、Pinecone）
 2. 将规则引擎替换为LLM调用（OpenAI GPT、Claude等）
