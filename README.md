@@ -1,3 +1,9 @@
+# AI-Driven Customer Support Orchestrator
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status: Active Development](https://img.shields.io/badge/status-active%20development-brightgreen)](https://github.com/yourusername/customer-support-agents)
+
 一个**多Agent协作的智能客户支持系统**，通过动态知识聚合、长链推理和合规自动化，实现从客户提问到精准应答的全流程自动化，显著提升支持效率与一致性。
 
 ---
@@ -23,6 +29,29 @@
 ---
 
 ## 🏗️ 系统架构
+
+```mermaid
+graph LR
+    A[客户工单] --> B(意图理解Agent)
+    B --> C{核心决策}
+    C --> D[答案合成Agent]
+    D --> E[合规检查Agent]
+    E --> F[最终响应]
+  
+    G[动态知识库] --> D
+    H[历史工单] --> D
+    I[产品更新] --> G
+    J[知识聚合Agent] --> G
+  
+    D -->|冲突检测| K[版本修复记录]
+    D -->|交叉验证| L[操作指南]
+  
+    style A fill:#e1f5fe
+    style F fill:#c8e6c9
+    style J fill:#fff3e0
+    style E fill:#f3e5f5
+```
+
 ### 四大核心Agent
 
 | Agent | 职责 | 关键技术 |
@@ -41,6 +70,9 @@
 - 无外部依赖（纯Python标准库实现，便于演示）
 
 ### 安装与运行
+
+```bash
+# 1. 直接运行演示
 python demo_system.py
 ```
 
@@ -268,6 +300,14 @@ def check(self, answer, ticket):
 > - **零外部依赖原型**：纯Python标准库实现核心逻辑，证明架构可行性，便于快速验证
 
 ---
+
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+---
+
 
 **注意**：本项目为**架构演示原型**，生产环境需：
 1. 将 `MockDataStore` 替换为真实向量数据库（如Chroma、Pinecone）
